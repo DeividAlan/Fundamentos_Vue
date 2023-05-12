@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./vue.js"></script>
+  <title>Document</title>
+  <style>
+    .verde {
+      background-color: green;
+    }
+
+    .azul {
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+    <div id="app">
+      <a :href="site">Site</a>
+      <p>{{mensagem}}</p>
+      <input type="text" :value="mensagem">
+      <input type="text" :value="2 + 2" :class="1 === 1 ? 'verde' : estilo">
+      <input type="text" v-on:keyup="imprimirTexto($event)">
+      <button v-on:click="mensagemAlerta()">Botão</button>
+    </div>
+
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          site: 'www.google.com.br',
+          mensagem: 'Primeiro template controlado pelo Vue',
+          estilo: 'azul',
+          n1: 10,
+          n2: 5,
+        },
+        methods: {
+          somar: function somar() {
+            return this.n1 + this.n2;
+          },
+          subtrair: function() {
+            return this.n1 - this.n2;
+          },
+          multiplicar: () => {
+            return 4 * 2;
+          },
+          dividir() {
+            return this.n1 / this.n2;
+          },
+          imprimirTexto (e) {
+            console.log(e);
+          },
+          mensagemAlerta () {
+            console.log('Teste');
+          }
+        }
+      });
+    </script>
+</body>
+</html>
